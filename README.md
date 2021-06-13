@@ -73,4 +73,27 @@ The neural network we employed was complex, with 100+ hidden layers for image fe
 
 3. Hyperparameters tuning
 
-The most impactful factor for the training time and model accuracy is the learning rate of the model.
+The most impactful factor for the training time and model accuracy is the learning rate of the model. At first we used 0.001 as the default learning rate. However, we found that the accuracy bounced a lot, which means the loss function was not converging, so we reduced the learning rate to 0.0001. 
+
+That was a mistake.
+
+After a half-day trial and error, we discovered that although the accuracy bounced a lot, its average was actually increasing slowly over time. Upon discovering the trend, we tuned the hyperparameters to be much more aggressive, with learning rate 0.005, lower decay rate of learning rate and momentum ratio of 0.9+.
+
+## **Insight**
+1. Training dataset matters a lot
+The model can only detect objects which are similar to the training set well. Even a slight variation would reduce the accuracy by a lot. So it is vital to introduce as many variation as possible to mimic real-life situations.
+
+2. Apply high learning rate for initial model training
+Even for transferred learning, the weightings of the model may be far away from the optimal settings. High learning rate can help converge to the minimum of the loss function during backpropagation much faster.
+
+3. Apply low learning rate during final stage of deep learning
+Once the weightings of the model are close to the optimal settings, low learning rate can prevent "over-shooting" the minimum and converge closer to it.
+
+4. Decay may cause the learning rate to decrease too rapidly
+There are many different decay formulas, which make the learning rate to decrease exponentially, inversely or by step. As the model we selected used inverse decrease formula, not only we had to reduce the decay rate, we had to adjust the learning rate higher manually from time to time, to force the neural network to evolve at a higher rate.
+
+5. Momentum helps breaking through the local minimum of loss function
+Momentum is a term which specifies how much proportion of gradient decent of previous iteration to retain. Sometimes there are local minimum of the loss function, which causes a wall that make the accuracy of the model stuck to a level without improvement no matter how much it trains. Momentum helps by letting the gradient decent to "overshoot" these local minimum. We initially used 0.9+ for momentum, then gradually reduced it to 0.1 during the final stage of deep learning.
+
+6. Reducing the no. of classes the model has to predict, by breaking down the problem into smaller problems, would increase the accuracy
+We trained the neral network to detect 52 different Poker cards. A better approach is to train 2 separate neral networks, one for the ranks (Ace to King), and one for the 4 suits (clubs diamonds, hearts and spades), then combine their results to detect the actual card. This approach reduce the no. of classes from 52 to 17 (13 ranks + 4 suits), which is much less demanding
