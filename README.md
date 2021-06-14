@@ -1,4 +1,4 @@
-# Object Detection from images (Poker Card)
+# Object Detection from Images (Poker Card)
 A project to master object detection skills, using deep learning techniques
 
 ## **The Goal**
