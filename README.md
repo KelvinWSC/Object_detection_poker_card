@@ -44,18 +44,62 @@ As the dataset for training was not sufficient, we downloaded and labeled more P
 
 ![image](https://user-images.githubusercontent.com/80243823/121810618-2ac96580-cc94-11eb-88d9-f55e1840fc5d.png)
 
+After upsampling, we increased the dataset sizes from 165 images to 1208 images.
 
 ## **New Model and Perforamnce Comparison**
 ![image](https://user-images.githubusercontent.com/80243823/121810826-decaf080-cc94-11eb-8a6c-a55f3fc2ce23.png)
 ![image](https://user-images.githubusercontent.com/80243823/121811097-d3c49000-cc95-11eb-9625-00ddd6fefe16.png)
+
+Although Model 2 has lower mean average precision, we further tested and anaylzed their performance based on different scenarios.
+There are 2 areas which require attention, the accuracy of card location, and the accuracy of card identification.
+
 ![image](https://user-images.githubusercontent.com/80243823/121811136-fe164d80-cc95-11eb-8016-801187a0ba7c.png)
 ![image](https://user-images.githubusercontent.com/80243823/121811156-14240e00-cc96-11eb-89f0-d151170259dd.png)
+For sheared image, the accuracy of card identification are similar for both models. However, Model 1 detected King of Heart at the upper left, near the chips area, which is incorrect. 
+
 ![image](https://user-images.githubusercontent.com/80243823/121811206-4897ca00-cc96-11eb-9d74-931c8307cef2.png)
+For close-up image, both model could detect the location and identification of the Poker cards fairly well. However, Model 2 wrongly detected the inverted 4 of Club as Ace of Club, due to the similarity of the character 4 and A.
+
 ![image](https://user-images.githubusercontent.com/80243823/121811271-71b85a80-cc96-11eb-9b00-3ac87ad7ecab.png)
+For clustered cards, both model performed equally well.
+
 ![image](https://user-images.githubusercontent.com/80243823/121811286-7ed54980-cc96-11eb-8e91-1379ddccb5c4.png)
 ![image](https://user-images.githubusercontent.com/80243823/121811305-9280b000-cc96-11eb-9e91-b2ec9623e563.png)
 ![image](https://user-images.githubusercontent.com/80243823/121811319-9c0a1800-cc96-11eb-9529-638cb80782c4.png)
 ![image](https://user-images.githubusercontent.com/80243823/121811333-b0e6ab80-cc96-11eb-9072-234bbcd33709.png)
+
+Upon close examination of the results, we discovered that Model 1, which used standard stock images for training, performed better for clear, well-defined Poker cards images; While Model 2, which used augmented images for training, performed better for chaotic, messy images.
+
+
+## **Blackjack Strategy based on Detection Result**
+The detection result can be output in a dictionary-like string as below, which can be parsed easily.
+
+```
+[
+{
+ "frame_id":1, 
+ "filename":"data/poker.jpg", 
+ "objects": [ 
+  {"class_id":17, "name":"KC", "relative_coordinates":{"center_x":0.787017, "center_y":0.571584, "width":0.305575, "height":0.481816}, "confidence":0.983804}, 
+  {"class_id":16, "name":"10D", "relative_coordinates":{"center_x":0.207783, "center_y":0.720466, "width":0.221507, "height":0.189736}, "confidence":0.994300}, 
+  {"class_id":1, "name":"JS", "relative_coordinates":{"center_x":0.364248, "center_y":0.562933, "width":0.122483, "height":0.663116}, "confidence":0.997848}
+ ] 
+}
+]
+```
+
+To distinguish dealer's card and player's card, we used y coordinate of the card location as the guideline. As the image/photo is taken from the player's perspective, the dealer's cards are always within the upper part of the image, while the player's cards are within the lower part.
+
+Sometimes, the same card might be detected multiple times if it is shown fully (ranks and suits are printed twice on the same card). To prevent this, we extract a unique list of card from the detection results, as there must be no duplication for a standard 52-card deck.
+
+The strategy of playing Blackjack is a simple probability problem, which can be resolved easily by simulating all possible outcomes. To increase the speed of the program, we hard-coded the calculation results which the program can refer to, instead of doing the calculation every time.
+
+![image](https://user-images.githubusercontent.com/80243823/121839627-1ecdba00-cd0d-11eb-9d39-c268bff28eaf.png)
+![image](https://user-images.githubusercontent.com/80243823/121839663-2c833f80-cd0d-11eb-918b-210cc99d6706.png)
+
+
+## **Realtime Application using Streamlit**
+In order to allow the model to be applied anywhere and anytime, we used Streamlit to allow image upload, realtime model threshold tuning and output display.
 
 
 ## **Challenges Encountered**
