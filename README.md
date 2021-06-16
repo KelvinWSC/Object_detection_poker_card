@@ -100,6 +100,11 @@ The strategy of playing Blackjack is a simple probability problem, which can be 
 ## **Realtime Application using Streamlit**
 In order to allow the model to be applied anywhere and anytime, we used Streamlit to allow image upload, realtime model threshold tuning and output display.
 
+https://user-images.githubusercontent.com/80243823/122184018-63e51e00-cebe-11eb-9021-3c2c5e6e11ea.mov
+
+After uploading an imgae, the program could identify Ace of Heart as the dealer's hand, Jack of Diamond and Ten of Diamond as the player's hand.
+Then it suggested the player to 'Stand'.
+
 
 ## **Challenges Encountered**
 There are 3 major challenges we encountered during the development of the model,
