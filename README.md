@@ -30,9 +30,8 @@ First, we downloaded 165 Poker card images images online. Then we used a communi
 
 The video below showcases the process in details,
 
-https://user-images.githubusercontent.com/80243823/121808460-319faa80-cc8b-11eb-9288-f41d10a3670a.mp4
+https://user-images.githubusercontent.com/80243823/122167747-f7622300-cead-11eb-9e8c-670049ecf0d9.mp4
 
- 
 
 ## **Initial Model Training**
 ![image](https://user-images.githubusercontent.com/80243823/121809713-74b04c80-cc90-11eb-92f2-e5bac5770643.png)
