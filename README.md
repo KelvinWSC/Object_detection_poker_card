@@ -1,5 +1,5 @@
 # Object Detection from Images (Poker Card)
-A project to master object detection skills, using deep learning techniques
+A project to master object detection skills, using deep learning and model tuning techniques
 
 ## **The Goal**
 To be able to detect multiple custom objects within one image and to be able to use the detection results for separate programming applications.
