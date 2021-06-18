@@ -23,7 +23,7 @@ With the base model selected, we would then train the model to recognize the car
 ## **Data collection**
 The data required for this project is unique. Not only we have to feed the model the correct card label, we have to feed the model the correct location of the card within an image. We couldn't find one available dataset online. For that, we created our own dataset using Poker card images we found online.
 
-First, we downloaded 165 Poker card images images online. Then we used a community tool to create 52 unique classes and labeled the images one by one using the classes. The tool would then ouput a txt file, containing coordinates and size of each label, as well as the correct identification of the card. 
+First, we downloaded 165 Poker card images online. Then we used a community tool to create 52 unique classes and labeled the images one by one using the classes. The tool would then ouput a txt file, containing coordinates and size of each label, as well as the correct identification of the card. 
 
 ![image](https://user-images.githubusercontent.com/80243823/121810398-513ad100-cc93-11eb-9915-bc281dd3c8a6.png)
 
