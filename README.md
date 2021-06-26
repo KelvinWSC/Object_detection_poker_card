@@ -1,6 +1,6 @@
 # Object Detection from Images (Poker Card)
 A project to master object detection skills, using deep learning and model tuning techniques
-
+aa
 ## **The Goal**
 To be able to detect multiple custom objects within one image and to be able to use the detection results for separate programming applications.
 This time we selected Poker card as the custom object and we would output an optimal strategy for the game Blackjack based on the cards detected on the betting table.
