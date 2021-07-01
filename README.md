@@ -20,7 +20,7 @@ We chose YOLOv4 as our base model.
 With the base model selected, we would then train the model to recognize the card itself, as well as the location of the card within an image.
 
  
-## **Data collection**
+## **Data Collection**
 The data required for this project is unique. Not only we have to feed the model the correct card label, we have to feed the model the correct location of the card within an image. We couldn't find one available dataset online. For that, we created our own dataset using Poker card images we found online.
 
 First, we downloaded 165 Poker card images online. Then we used a community tool to create 52 unique classes and labeled the images one by one using the classes. The tool would then ouput a txt file, containing coordinates and size of each label, as well as the correct identification of the card. 
@@ -38,12 +38,12 @@ https://user-images.githubusercontent.com/80243823/122167747-f7622300-cead-11eb-
 ![image](https://user-images.githubusercontent.com/80243823/121809837-07e98200-cc91-11eb-8a6e-dda3b8db2aa9.png)
 
 
-## **Upsampling**
+## **Multiplying the Dataset**
 As the dataset for training was not sufficient, we downloaded and labeled more Poker card images online. Not only that, we applied image augmentation to introduce variation to the dataset we had.
 
 ![image](https://user-images.githubusercontent.com/80243823/121810618-2ac96580-cc94-11eb-88d9-f55e1840fc5d.png)
 
-After upsampling, we increased the dataset sizes from 165 images to 1208 images.
+After multiplying, we increased the dataset sizes from 165 images to 1208 images.
 
 ## **New Model and Perforamnce Comparison**
 ![image](https://user-images.githubusercontent.com/80243823/121810826-decaf080-cc94-11eb-8a6c-a55f3fc2ce23.png)
