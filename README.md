@@ -19,7 +19,6 @@ We chose YOLOv4 as our base model.
 
 With the base model selected, we would then train the model to recognize the card itself, as well as the location of the card within an image.
 
- 
 ## **Data Collection**
 The data required for this project is unique. Not only we have to feed the model the correct card label, we have to feed the model the correct location of the card within an image. We couldn't find one available dataset online. For that, we created our own dataset using Poker card images we found online.
 
